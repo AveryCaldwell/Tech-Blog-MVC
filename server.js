@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const path = require('path');
-
+require('dotenv').config();
 const sequelize = require('./config/connection');
 
 // Create a new sequelize store using the express-session package
@@ -26,6 +26,7 @@ const sess = {
 };
 
 // Set Handlebars as the default template engine.
+const hbs = exphbs.create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
