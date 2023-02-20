@@ -181,17 +181,13 @@ You are required to submit BOTH of the following for review:
 ##  My process 💡
 
 ###  Built with 🔨
-- HTML
-- CSS
+- HTML, CSS, Bootstrap
 - JavaScript
-- MySQL
-- Handlebars
-- Express
-- Sequelizw
-- Dotenv
-- Bycrypt
-- Heroku
-- GitHub
+- MySQL, Sequelize
+- Handlebars.js
+- Node.js, Express
+- Dotenv, Bycrypt
+- Heroku, GitHub
 
 <br>
 

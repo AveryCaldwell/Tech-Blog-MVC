@@ -1,11 +1,6 @@
 const router = require('express').Router();
-const withAuth = require('../utils/auth');
-
-
-
-
-
-
+const sequelize = require('../config/connection');
+const { Post, User, Comment } = require('../models');
 
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
