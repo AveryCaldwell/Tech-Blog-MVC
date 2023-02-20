@@ -1,17 +1,16 @@
-// module.exports = Post;
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // create POST model
 class Post extends Model {}
 
-// create fields/columns 
+// create fields/columns
 Post.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             primaryKey: true,
+            allowNull: false,
             autoIncrement: true,
         },
         title: {

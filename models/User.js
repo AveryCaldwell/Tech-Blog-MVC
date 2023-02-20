@@ -15,15 +15,15 @@ User.init(
         // id colums
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             primaryKey: true,
+            allowNull: false,
             autoIncrement: true,
         },
         // username column
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            uniquee: true,
+            unique: true,
         },
         // email column
         email: {
@@ -40,13 +40,13 @@ User.init(
             allowNull: false,
             validate: {
                 // this means the password must be at least four characters long
-                len: [8],
+                len: [5],
             },
         },
     },
     {
         hooks: {
-            // set up beforeCreate lifecycle "hook" functionality
+            // create beforeCreate lifecycle "hook" functionality
             beforeCreate: async (newUserData) => {
                 newUserData.password = await bcrypt.hash(
                     newUserData.password,
@@ -54,7 +54,7 @@ User.init(
                 );
                 return newUserData;
             },
-            // set up beforeUpdate lifecycle "hook" functionality
+            // create beforeUpdate lifecycle "hook" functionality
             beforeUpdate: async (updatedUserData) => {
                 updatedUserData.password = await bcrypt.hash(
                     updatedUserData.password,
