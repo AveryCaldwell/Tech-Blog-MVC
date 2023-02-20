@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>THE Tech Blog of Blogs</title>
+    <link rel="stylesheet" href="/public/css/jass.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- {{!-- HEADER --}} -->
+    <div class="flex-column justify-space-around">
+        <header class="display-flex justify-space-between align-center p-2">
+            <h1>
+                <a href="/">THE Tech Blog of Blogs</a>
+            </h1>
+            <nav>
+                <!-- Conditionally render login or logout links -->
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+                <!-- {{#if logged_in}} -->
+                <a href="/logout">Logout</a>
+                <!-- {{else}} -->
+                <a href="/login">Login</a>
+                <!-- {{/if}} -->
+            </nav>
+        </header>
+
+        <!-- {{!-- MAIN --}} -->
+        <main class="container container-fluid mt-5">
+            <div class="home-title">Tech Blog</div>
+            <!-- Render the sub layout -->
+            <!-- {{{ body }}} -->
+        </main>
+        <footer>
+            Thank you for visiting! 😀
+        </footer>
+    </div>
+
+    <!-- Render script for logged in users only -->
+    <!-- {{#if logged_in}} -->
+    <script src="/public/js/logout.js"></script>
+    <!-- {{/if}} -->
+</body>
+
+</html>
