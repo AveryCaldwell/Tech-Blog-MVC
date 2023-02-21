@@ -1,8 +1,8 @@
-// const signupFormHandler = async (event) => {
-//     event.preventDefault();
-
-async function signupFormHandler(event) {
+const signupFormHandler = async (event) => {
     event.preventDefault();
+
+    // async function signupFormHandler(event) {
+    //     event.preventDefault();
 
     // Get the information from the sign up form
     const username = document.querySelector('#name-signup').value.trim();
@@ -11,7 +11,7 @@ async function signupFormHandler(event) {
 
     // if all three fields have content
     if (username && email && password) {
-        const response = await fetch('/api/user', {
+        const response = await fetch('/api/users', {
             method: 'POST',
             body: JSON.stringify({ username, email, password }),
             headers: { 'Content-Type': 'application/json' },
@@ -21,11 +21,11 @@ async function signupFormHandler(event) {
             console.log('Account successfully created!');
             document.location.replace('/dashboard');
         } else {
-            alert('Something went wrong, failed to sign up.');
+            alert('UH OH! Something went wrong. Sign up failed.');
         }
     }
-}
+};
 
 document
-    .querySelector('#signup-form')
+    .querySelector('.signup-form')
     .addEventListener('submit', signupFormHandler);
