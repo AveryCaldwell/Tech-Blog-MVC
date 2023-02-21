@@ -1,1 +1,0 @@
-const { Comment } = require('../models');
