@@ -17,6 +17,7 @@
       <h1>
         <a href="/">Tech Blog</a>
       </h1>
+      <br>
       <nav>
         <!-- Conditionally render login or logout links -->
         <a href="/">Home</a>
@@ -31,13 +32,11 @@
 
     {{!-- MAIN --}}
     <main class="container container-fluid mt-5">
-      <div class="home-title">Tech Blog</div>
-      <!-- Render the sub layout -->
+      <!-- Render the layout -->
       {{{ body }}}
     </main>
-    <footer>
-      Thank you for visiting! 😀
-    </footer>
+    <br>
+
   </div>
 
   <!-- Render script for logged in users only -->

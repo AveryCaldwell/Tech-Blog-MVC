@@ -77,7 +77,8 @@ router.get('/edit/:id', withAuth, (req, res) => {
             }
             // serialize the data
             const post = dbPostData.get({ plain: true });
-            res.render('edit-post', {
+            console.log('sending ' + req.session.username);
+            res.render('editPost', {
                 post,
                 loggedIn: true,
                 username: req.session.username,
@@ -90,7 +91,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
 });
 // NEW post; (/dashboard/new)
 router.get('/new', withAuth, (req, res) => {
-    res.render('new-post', { username: req.session.username });
+    res.render('newPost', { username: req.session.username });
 });
 
 module.exports = router;
