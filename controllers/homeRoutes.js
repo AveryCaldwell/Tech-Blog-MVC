@@ -149,7 +149,6 @@ const withAuth = require('../utils/auth');
 // Render Homepage
 router.get('/', async (req, res) => {
     try {
-        // Query configuration
         // From the Post table, include the following
         const postData = await Post.findAll({
             attributes: ['id', 'title', 'content', 'created_at'],
@@ -221,7 +220,7 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-//POST
+//get POST by id
 router.get('/post/:id', async (req, res) => {
     try {
         const postData = await Post.findOne({
@@ -248,10 +247,6 @@ router.get('/post/:id', async (req, res) => {
                         'user_id',
                         'created_at',
                     ],
-                    //   include: {
-                    //     model: User,
-                    //     attributes: ['username'],
-                    //   },
                 },
             ],
         });
@@ -264,7 +259,7 @@ router.get('/post/:id', async (req, res) => {
         // Serialize the post data
         const post = postData.get({ plain: true });
 
-        //Past data into template
+        //insert data into template
         res.render('single-post', {
             post,
             loggedIn: req.session.loggedIn,

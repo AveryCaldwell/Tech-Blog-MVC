@@ -10,23 +10,26 @@ const newFormHandler = async (event) => {
 
     const post_id = event.target.getAttribute('data-id');
     if (content && post_id) {
-    // if (email && password) {
-    const response = await fetch('/api/posts', {
-        method: 'POST',
-        body: JSON.stringify({ title, content }),
-        headers: { 'Content-Type': 'application/json' },
-    });
-    // if the response is okay, reload the page, showing the newest post now in the user's post list
-    if (response.ok) {
-        document.location.replace('/dashboard');
-        console.log(response);
-    } else {
-        alert('Failed to add post.');
+        // if (email && password) {
+        const response = await fetch('/api/posts', {
+            method: 'POST',
+            body: JSON.stringify({ title, content }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+        // if the response is okay, reload the page, showing the newest post now in the user's post list
+        if (response.ok) {
+            document.location.replace('/post/${post_id}$');
+            console.log('Comment posted successfully.');
+        } else {
+            alert('Failed to add post.');
+        }
     }
 };
-// };
 
-// Event Listener for the new post submit button
-document
-    .querySelector('.new-post-form')
-    .addEventListener('submit', newFormHandler);
+// Event Listener for adding a post
+if (document.querySelector('#submitBtn') != null) {
+    document
+        .querySelector('.submitBtn')
+        .addEventListener('click', newFormHandler);
+}
+// document.querySelector('#submitBtn').addEventListener('click', newFormHandler);

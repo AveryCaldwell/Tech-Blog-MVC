@@ -1,9 +1,21 @@
-
 <!-- Loop over each object in the posts array -->
 <article class="post">
 
     {{#each posts as |post| }}
-    {{> post-info post}}
+    {{!-- {{> post-info post}} --}}
+    <div class="post container row mb-4 p-4">
+        <div class="col-md-5">
+            <h2>
+                <a href="/post/{{post.id}}">{{post.name}}</a>
+            </h2>
+            <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
+        </div>
+        <div class="col-md-7">
+            <p>
+                {{post.description}}
+            </p>
+        </div>
+    </div>
     {{/each}}
 
 </article>

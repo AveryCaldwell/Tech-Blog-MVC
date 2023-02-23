@@ -1,48 +1,38 @@
-<section class="row">
-    <div class="column">
-        <h2>Make a new post: </h2>
-        <br>
-        <form class="create-form" action="/api/posts" method="POST">
-            <div>
-                <label for="post-title">Title</label>
-                <input type="text" id="title" name="post-title" placeholder="title">
-            </div>
-            {{!-- <div>
-                <label for="post-text">Text</label>
-                <textarea id="post-text" name="post-text"></textarea>
-            </div> --}}
-            <label class="form-label">Content</label>
-            <textarea id="content" name="content" class="form-input"></textarea>
-            <button class="btn btn-primary" type="submit">Create</button>
-            {{!-- <button type="submit" class="btn"><a class="link" href="/dashboard/new"> New Post</a></button> --}}
+<!DOCTYPE html>
+<html lang="en">
 
-        </form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech-Blog</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+{{!-- post info --}}
+<div class="card">
+    <div class="card-header">
+        <h4><a class="link" href="/post/{{id}}">{{title}}</a></h4>
+        <p>Posted by {{user.username}} on {{format_date created_at}}</p>
     </div>
+    <p class="card-body">{{content}}</p>
+</div>
 
-    {{#if posts.length}}
-    <section>
-        <h2>Your Posts</h2>
-        <ol>
-            {{#each posts as |post|}}
-            <li>
-                {{> post-info post}}
-                <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-            </li>
-            {{/each}}
-        </ol>
-    </section>
-    {{/if}}
-
-    <!--Script to add a post-->
-    <script src="/js/addPost.js"></script>
-
-    {{!-- dash info --}}
+{{!-- comment info --}}
+<div class="comments">
+    {{#each this}}
     <div class="card">
-        <div class="card-header">
-            <h4><a class="link" href="/dashboard/edit/{{id}}">{{title}}</a></h4>
-        </div>
+        <h3 class="card-header"></h3>
+        <section class="comment card-body">
+            <div class="text">
+                {{comment_text}}
+            </div>
+            <div class="meta">
+                -{{user.username}}, {{format_date created_at}}
+            </div>
+        </section>
     </div>
+    {{/each}}
+</div>
 
-    <button type="submit" class="btn"><a class="link" href="/dashboard/new">+ New Post</a></button>
-
-    <script src="/js/addPost.js"></script>
+<button type="submit" class="btn" id="submitBtn">+ New Post</button>
+<script src="/js/addPost.js"></script>
