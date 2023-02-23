@@ -8,8 +8,10 @@ const newFormHandler = async (event) => {
     // user id is added from the session information in the route
     // use the add a new post POST route to add the post
 
+    const post_id = event.target.getAttribute('data-id');
+    if (content && post_id) {
     // if (email && password) {
-    const response = await fetch('/api/post', {
+    const response = await fetch('/api/posts', {
         method: 'POST',
         body: JSON.stringify({ title, content }),
         headers: { 'Content-Type': 'application/json' },
@@ -17,12 +19,14 @@ const newFormHandler = async (event) => {
     // if the response is okay, reload the page, showing the newest post now in the user's post list
     if (response.ok) {
         document.location.replace('/dashboard');
+        console.log(response);
     } else {
-        alert('Failed to log in.');
+        alert('Failed to add post.');
     }
 };
 // };
 
+// Event Listener for the new post submit button
 document
     .querySelector('.new-post-form')
     .addEventListener('submit', newFormHandler);
