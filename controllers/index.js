@@ -1,4 +1,7 @@
-const router = require('express').Router();
+// const router = require('express').Router();
+
+const express = require('express');
+const router = express.Router();
 
 const apiRoutes = require('./api');
 const homeRoutes = require('./homeRoutes');
@@ -8,8 +11,15 @@ router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
 router.use('/dashboard', dashboardRoutes);
 
-// router.use((req, res) => {
-//     res.status(404).end();
-// });
+// const userRoutes = require('./api/userRoutes.js');
+// const postRoutes = require('./postRoutes.js');
+// const commentRoutes = require('./api/commentRoutes.js');
 
+// router.use('/api/users', userRoutes);
+// router.use('/api/comments', commentRoutes);
+// router.use('/api/posts', postRoutes);
+
+router.get('/showsessions', (req, res) => {
+    res.json(req.session);
+});
 module.exports = router;

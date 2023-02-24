@@ -20,12 +20,14 @@
       <br>
       <nav class="navbar">
         <!-- Conditionally render login or logout links -->
-        <a href="/">Home</a>
-        <a href="/dashboard">Dashboard</a>
         {{#if logged_in}}
-        <a href="/api/users/logout" id="logout">Logout</a>
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/dashboard">Dashboard</a>
+        <a class="nav-link" href="/api/users/logout" id="logout">Logout</a>
         {{else}}
-        <a href="/login">Login</a>
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/dashboard">Dashboard</a>
+        <a class="nav-link" href="/login">Login</a>
         {{/if}}
       </nav>
     </header>
@@ -37,14 +39,13 @@
     </main>
     <br>
 
+    <!-- Render script for logged in users only -->
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
   </div>
 
-  <!-- Render script for logged in users only -->
-  {{!-- {{#if logged_in}} --}}
-  <script src="/js/logout.js"></script>
-  {{!-- {{/if}} --}}
-
 </body>
-<footer>Thank you for visiting!</footer>
+{{!-- <footer>Thank you for visiting!</footer> --}}
 
 </html>

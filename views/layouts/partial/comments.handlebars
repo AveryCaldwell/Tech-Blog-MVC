@@ -1,8 +1,8 @@
-<div class="comments">
+{{!-- <div class="comments">
     {{#each this}}
     <div class="card">
         <h3 class="card-header"></h3>
-        <section class="comment card-body">
+        <section class="comment-text card-body">
             <div class="text">
                 {{comment_text}}
             </div>
@@ -12,4 +12,37 @@
         </section>
     </div>
     {{/each}}
-</div>
+</div> --}}
+
+<h1>The Tech Blog</h1>
+<section id="currentBlogComment">
+    <section class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{title}}</h3>
+            <h5>Posted by {{user.username}} on {{date_created}}</h5>
+            <p class="card-text">{{comment_text}}</p>
+        </div>
+    </section>
+    {{#each comment}}
+    <section class="card">
+        <div class="card-body">
+            <p>Comment</p>
+            <p class="card-text">{{body}}</p>
+        </div>
+    </section>
+    {{/each}}
+</section>
+<section class="card text-center">
+    <div class="card-body">
+        <h3 class="card-title">Comment</h3>
+        <form id="newComment">
+            <div class="card-text"></div>
+            <input id="hiddenCommentId" hidden="true" value="{{id}}"></input>
+            <textarea id="comment" placeholder="Type your comment here..."></textarea>
+    </div>
+    <button id="create">Submit</button>
+    </form>
+    </div>
+</section>
+
+<script src="/js/comment.js"></script>

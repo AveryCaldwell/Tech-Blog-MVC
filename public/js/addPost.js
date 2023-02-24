@@ -29,7 +29,7 @@ const newFormHandler = async (event) => {
 // Event Listener for adding a post
 if (document.querySelector('#submitBtn') != null) {
     document
-        .querySelector('.submitBtn')
+        .querySelector('#submitBtn')
         .addEventListener('click', newFormHandler);
 }
 // document.querySelector('#submitBtn').addEventListener('click', newFormHandler);

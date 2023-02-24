@@ -2,12 +2,14 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 // connects to login functions in utilities
 const withAuth = require('../../utils/auth');
+const bcrypt = require('bcrypt');
 
 // GET all users; api/user
 router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll({
-            attributes: { exclude: ['password'] },
+            include: [Post, Comment],
+            // attributes: { exclude: ['password'] },
         });
         res.status(200).json(userData);
     } catch (err) {
@@ -52,16 +54,16 @@ router.get('/:id', async (req, res) => {
         res.status(400).json(err);
     }
 });
+
 // singup user ('/api/user)
 router.post('/', async (req, res) => {
     try {
-        const userData = await User.create(req.body);
+        const userData = await User.create(req.body, { individualHooks: true });
 
         req.session.save(() => {
             req.session.user_id = userData.id;
             // req.session.username = userData.username;
             req.session.logged_in = true;
-
             res.status(200).json(userData);
         });
     } catch (err) {
@@ -121,12 +123,12 @@ router.put('/:id', (req, res) => {
             id: req.params.id,
         },
     })
-        .then((userData) => {
-            if (!userData) {
+        .then((updateUser) => {
+            if (!updateUser) {
                 res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
-            res.json(userData);
+            res.json(updateUser);
         })
         .catch((err) => {
             console.log(err);
@@ -140,12 +142,12 @@ router.delete('/:id', (req, res) => {
             id: req.params.id,
         },
     })
-        .then((userData) => {
-            if (!userData) {
+        .then((removeUser) => {
+            if (!removeUser) {
                 res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
-            res.json(userData);
+            res.json(removeUser);
         })
         .catch((err) => {
             console.log(err);
