@@ -79,22 +79,13 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
-    if (!req.session.user) {
-        return res.redirect('/login');
-    }
-    User.findByPk(req.session.user.id, {
-        include: [Post, Comment],
-    }).then((userData) => {
-        const userDash = userDash.get({ plain: true });
-        userDash.loggedIn = req.session.user ? true : false;
-        res.render('dashboard', userDash);
-    });
+    res.render('dashboard');
 });
 
-router.get('*', (req, res) => {
-    res.redirect('/');
-});
-
+// router.get('*', (req, res) => {
+//     res.redirect('/');
+// });
+//
 // //get POST by id
 // router.get('/post/:id', async (req, res) => {
 //     try {
