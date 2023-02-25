@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     try {
         // From the Post table, include the following
         const postData = await Post.findAll({
-            attributes: ['id', 'title', 'content', 'created_at'],
+            attributes: ['id', 'title', 'content', 'date_created'],
             include: [
                 {
                     model: Comment,
@@ -17,10 +17,10 @@ router.get('/', async (req, res) => {
                         'comment_text',
                         'post_id',
                         'user_id',
-                        'created_at',
+                        'date_created',
                     ],
                     // Order the posts from most recent to least
-                    order: [['created_at', 'DESC']],
+                    order: [['date_created', 'DESC']],
 
                     // From the User table, include the post creator's user name
                     // From the Comment table, include all comments
@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
                         'comment_text',
                         'post_id',
                         'user_id',
-                        'created_at',
+                        'date_created',
                     ],
                     include: {
                         model: User,
@@ -91,7 +91,7 @@ router.get('/dashboard', (req, res) => {
 //     try {
 //         const postData = await Post.findOne({
 //             where: { id: req.params.id },
-//             attributes: ['id', 'content', 'title', 'created_at'],
+//             attributes: ['id', 'content', 'title', 'date_created'],
 //             include: [
 //                 {
 //                     model: Comment,
@@ -100,7 +100,7 @@ router.get('/dashboard', (req, res) => {
 //                         'comment_text',
 //                         'post_id',
 //                         'user_id',
-//                         'created_at',
+//                         'date_created',
 //                     ],
 //                     include: { model: User, attributes: ['username'] },
 //                 },
@@ -111,7 +111,7 @@ router.get('/dashboard', (req, res) => {
 //                         'comment_text',
 //                         'post_id',
 //                         'user_id',
-//                         'created_at',
+//                         'date_created',
 //                     ],
 //                 },
 //             ],

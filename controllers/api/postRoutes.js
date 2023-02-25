@@ -6,8 +6,8 @@ const withAuth = require('../../utils/auth');
 // router.get('/', async (req, res) => {
 //     try {
 //         const postData = await Post.findAll({
-//             attributes: ['id', 'title', 'content', 'created_at'],
-//             order: [['created_at', 'DESC']],
+//             attributes: ['id', 'title', 'content', 'date_created'],
+//             order: [['date_created', 'DESC']],
 //             include: [
 //                 {
 //                     model: User,
@@ -20,7 +20,7 @@ const withAuth = require('../../utils/auth');
 //                         'comment_text',
 //                         'post_id',
 //                         'user_id',
-//                         'created_at',
+//                         'date_created',
 //                     ],
 //                     include: {
 //                         model: User,
@@ -41,7 +41,7 @@ const withAuth = require('../../utils/auth');
 //             where: {
 //                 id: req.params.id,
 //             },
-//             attributes: ['id', 'content', 'title', 'created_at'],
+//             attributes: ['id', 'content', 'title', 'date_created'],
 //             include: [
 //                 {
 //                     model: User,
@@ -54,7 +54,7 @@ const withAuth = require('../../utils/auth');
 //                         'comment_text',
 //                         'post_id',
 //                         'user_id',
-//                         'created_at',
+//                         'date_created',
 //                     ],
 //                     include: {
 //                         model: User,
