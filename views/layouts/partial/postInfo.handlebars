@@ -1,7 +1,9 @@
+{{#each post}}
 <div class="card">
     <div class="card-header">
-        <h4><a class="link" href="/post/{{id}}">{{title}}</a></h4>
-        <p>Posted by {{user.username}} on {{format_date date_created}}</p>
+        <h4><a class="link" href="/post/{{this.id}}">{{this.title}}</a></h4>
+        <p>Posted by {{this.user.username}} on {{format_date this.date_created}}</p>
     </div>
-    <p class="card-body">{{content}}</p>
+    <p class="card-body">{{this.content}}</p>
 </div>
+{{/each}}

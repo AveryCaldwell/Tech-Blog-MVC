@@ -25,34 +25,49 @@
         {{/if}}
         <button type="submit" class="btn" id="new-post-button">+ New Post</button>
 
-        {{!-- post info --}}
-        {{#if posts.length}}
-        <div class="card">
-            <div class="card-header">
-                <h4><a class="link" href="/post/{{id}}">{{title}}</a></h4>
-                <p>Posted by {{user.username}} on {{format_date date_created}}</p>
-            </div>
-            <p class="card-body">{{content}}</p>
-        </div>
 
-        {{!-- comment info --}}
-        <div class="comments">
-            {{#each this}}
-            <div class="card">
-                <h3 class="card-header"></h3>
-                <section class="comment card-body">
-                    <div class="text">
-                        {{comment_text}}
-                    </div>
-                    <div class="meta">
-                        {{user.username}}, {{format_date date_created}}
-                    </div>
-                </section>
-            </div>
-            {{/each}}
+        {{#each posts}}
+        <div>
+            <h2>{{title}}</h2>
+            <p>{{content}}</p>
+            <p>Posted by {{Comment[0].User.username}} on {{date_created}}</p>
+            <ul>
+                {{#each Comment}}
+                <li>{{comment_text}} - {{User.username}}</li>
+                {{/each}}
+            </ul>
         </div>
-        {{/if}}
+        {{/each}}
+
     </main>
 </body>
 
 </html>
+
+{{!-- post info --}}
+{{!-- {{#if posts.length}}
+<div class="card">
+    <div class="card-header">
+        <h4><a class="link" href="/post/{{id}}">{{title}}</a></h4>
+        <p>Posted by {{user.username}} on {{format_date date_created}}</p>
+    </div>
+    <p class="card-body">{{content}}</p>
+</div> --}}
+
+{{!-- comment info --}}
+{{!-- <div class="comments">
+    {{#each this}}
+    <div class="card">
+        <h3 class="card-header"></h3>
+        <section class="comment card-body">
+            <div class="text">
+                {{comment_text}}
+            </div>
+            <div class="meta">
+                {{user.username}}, {{format_date date_created}}
+            </div>
+        </section>
+    </div>
+    {{/each}}
+</div>
+{{/if}} --}}

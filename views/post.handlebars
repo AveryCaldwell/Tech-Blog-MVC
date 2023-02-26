@@ -1,20 +1,31 @@
-{{> post-info post}}
+<div class="postContainer container-fluid mt-5">
+    {{!-- displays the blog post with its title, author, and date created, and the text of the post --}}
+    {{#each post}}
+    <div class="card">
+        <div class="card-header">
+            <h4><a class="link" href="/post/{{this.id}}">{{this.title}}</a></h4>
+            <p>Posted by {{this.user.username}} on {{format_date this.date_created}}</p>
+        </div>
+        <p class="card-body">{{this.content}}</p>
+    </div>
+    {{/each}}
 
-{{#if logged_in}}
-<div class="card">
-    <h3 class="card-header"></h3>
-    <form class="card-body comment-form" id="comment-form">
+    {{!-- if logged in, then add a comment --}}
+    {{#if loggedIn}}
+    <div class="card comment-card">
+        <form class="card-body comment-form" id="comment-form">
+            <label class="form-label">Add Comment</label>
+            <textarea id="comment" name="comment-body" class="form-input"></textarea>
+            <button type="submit" class="commentButton" data-id="{{id}}">Submit</button>
+        </form>
+    </div>
+    {{/if}}
 
-        <label class="form-label">Comment</label>
-        <input id="comment" name="comment-body" class="form-input" />
 
-        <button type="submit" class="btn">Submit</button>
-    </form>
+    {{> comments post.comments}}
+    {{#if loggedIn}}
+    <script src="/js/comment.js"></script>
+    {{/if}}
+
+
 </div>
-{{/if}}
-
-{{> comments post.comments}}
-
-{{#if logged_in}}
-<script src="/js/comment.js"></script>
-{{/if}}
