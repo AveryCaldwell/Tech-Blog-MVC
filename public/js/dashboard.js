@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '/';
     });
     // Get the new post form element
-    var newPostForm = document.getElementById('new-post-form');
+    const newPostForm = document.getElementById('new-post-form');
     const newFormHandler = async (event) => {
         event.preventDefault();
 
