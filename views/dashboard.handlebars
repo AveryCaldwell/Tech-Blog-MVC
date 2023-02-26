@@ -8,31 +8,51 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-{{!-- post info --}}
-<div class="card">
-    <div class="card-header">
-        <h4><a class="link" href="/post/{{id}}">{{title}}</a></h4>
-        <p>Posted by {{user.username}} on {{format_date date_created}}</p>
-    </div>
-    <p class="card-body">{{content}}</p>
-</div>
+<body>
+    <header>
+        <h1>Welcome to the Most Technologically Savvy Blog on the Web!</h1>
+    </header>
+    <main>
+        {{#if posts}}
+        <h2>Your Posts:</h2>
+        <ul>
+            {{#each posts}}
+            <li><a href="/post/{{id}}">{{title}}</a></li>
+            {{/each}}
+        </ul>
+        {{else}}
+        <p>You haven't created any posts yet.</p>
+        {{/if}}
+        <button type="submit" class="btn" id="new-post-button">+ New Post</button>
 
-{{!-- comment info --}}
-<div class="comments">
-    {{#each this}}
-    <div class="card">
-        <h3 class="card-header"></h3>
-        <section class="comment card-body">
-            <div class="text">
-                {{comment_text}}
+        {{!-- post info --}}
+        {{#if posts.length}}
+        <div class="card">
+            <div class="card-header">
+                <h4><a class="link" href="/post/{{id}}">{{title}}</a></h4>
+                <p>Posted by {{user.username}} on {{format_date date_created}}</p>
             </div>
-            <div class="meta">
-                {{user.username}}, {{format_date date_created}}
-            </div>
-        </section>
-    </div>
-    {{/each}}
-</div>
+            <p class="card-body">{{content}}</p>
+        </div>
 
-<button type="submit" class="btn" id="submitBtn">+ New Post</button>
-<script src="/js/addPost.js"></script>
+        {{!-- comment info --}}
+        <div class="comments">
+            {{#each this}}
+            <div class="card">
+                <h3 class="card-header"></h3>
+                <section class="comment card-body">
+                    <div class="text">
+                        {{comment_text}}
+                    </div>
+                    <div class="meta">
+                        {{user.username}}, {{format_date date_created}}
+                    </div>
+                </section>
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
+    </main>
+</body>
+
+</html>

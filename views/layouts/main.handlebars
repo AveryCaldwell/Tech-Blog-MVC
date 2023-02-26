@@ -20,7 +20,7 @@
       <br>
       <nav class="navbar">
         <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
+        {{#if user}}
         <a class="nav-link" href="/">Home</a>
         <a class="nav-link" href="/dashboard">Dashboard</a>
         <a class="nav-link" href="/api/users/logout" id="logout">Logout</a>
