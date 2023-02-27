@@ -129,6 +129,12 @@ a:link {
     padding-left: 45px;
     text-indent: 5px;
 }
+
+/* =====================LOGIN======================= */
+#card-body {
+    border-radius: 25px;
+}
+
 /* =====================POST======================= */
 .post-card {
     background-color: var(--blue);
@@ -200,7 +206,5 @@ a:link {
     border: none;
     border-radius: 5px;
 }
-
-/* =====================LOGIN======================= */
 
 /* =====================SIGNUP======================= */
