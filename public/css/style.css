@@ -15,7 +15,8 @@
 body {
     background-color: var(--light);
 }
-/* HEADER */
+
+/* =====================HEADER======================= */
 .jumbotron {
     background-color: var(--gray);
     color: white;
@@ -33,7 +34,7 @@ a:link {
     text-decoration: none;
 }
 
-/* NAVBAR */
+/* =====================NAVBAR======================= */
 .nav-link {
     color: white;
     text-decoration: none;
@@ -46,7 +47,7 @@ a:link {
     text-decoration: none;
 }
 
-/* MAIN */
+/* =====================MAIN======================= */
 #homepage-title {
     font-size: 36px;
     padding-bottom: 15px;
@@ -62,7 +63,7 @@ a:link {
     text-decoration: none;
 }
 
-/* POST handlebars */
+/* =====================POST======================= */
 .post-card {
     background-color: var(--blue);
 }
@@ -92,11 +93,11 @@ a:link {
 }
 #editContent {
     width: 100%;
-    height: 150px;
+    height: 100px;
     display: inline-block;
 }
 
-/* POST buttons */
+/* =====================POST buttons======================= */
 .update-comment,
 .delete-comment,
 #newCommentButton {
@@ -105,9 +106,33 @@ a:link {
     background-color: var(--gray);
 }
 
-/* COMMENT */
+/* =====================COMMENT======================= */
+.comment-card {
+    /* left: 45px; */
+    background-color: var(--light);
+    border: none;
+    margin-bottom: 15px;
+}
 .comment-card-text {
     width: 60%;
-    height: 50px;
-    /* test text for commit */
+    height: auto;
+    border: none;
+    font-size: 18px;
+    padding: 15px 5px 0px 15px;
+    text-indent: 10px;
+    font-style: italic;
 }
+.comment-username {
+    text-indent: 35px;
+}
+/* =====================ADD COMMENT======================= */
+.add-comment-card {
+    width: 100%;
+    left: 45px;
+    margin-bottom: 15px;
+    background-color: var(--light);
+    border: none;
+    border-radius: 5px;
+}
+
+/* =====================LOGIN======================= */
