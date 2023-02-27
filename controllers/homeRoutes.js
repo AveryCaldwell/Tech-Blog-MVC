@@ -41,6 +41,7 @@ router.get('/', async (req, res) => {
                 if (req.session.loggedIn) {
                     resObj.loggedIn = true;
                     resObj.username = req.session.username;
+                    resObj.uid = req.session.user_id;
                 }
                 res.render('homepage', resObj);
             })
@@ -137,6 +138,7 @@ router.get('/posts/:id', (req, res) => {
                 if (req.session.loggedIn) {
                     resObj.loggedIn = true;
                     resObj.username = req.session.username;
+                    resObj.uid = req.session.user_id;
                 }
                 res.render('post', resObj);
             })

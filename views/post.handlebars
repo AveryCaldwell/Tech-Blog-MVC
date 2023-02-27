@@ -20,7 +20,14 @@
     <div class="card comment-card">
         <form class="card-body comment-form" id="comment-form">
             <label class="form-label">Comment by {{username}} on {{format_date date_created}}</label>
-            <textarea id="comment{{id}}" name="comment-body" disabled class="form-input">{{comment_text}}</textarea>
+            <textarea id="comment{{id}}" name="comment-body" {{#ifNotEquals ../uid user_id}} disabled {{/ifNotEquals}}
+                class="form-input">{{comment_text}}</textarea>
+            {{#ifEquals ../uid user_id}}
+            <button commentId="{{id}}" type="button" class="update-comment"
+                onclick="commentUpdate(event)">Update</button>
+            <button commentId="{{id}}" type="button" class="delete-comment"
+                onclick="commentDelete(event)">Delete</button>
+            {{/ifEquals}}
         </form>
     </div>
     {{/each}}
