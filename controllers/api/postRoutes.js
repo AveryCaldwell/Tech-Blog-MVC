@@ -66,4 +66,22 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
 });
 
+router.post('/comment', withAuth, async (req, res) => {
+    // if no user in session, send messsage
+    if (!req.session.user_id) {
+        return res.status(401).json({ msg: 'Please login!' });
+    }
+    try {
+        const newComment = await Comment.create({
+            ...req.body,
+            post_id: req.body.post_id,
+            comment_text: req.body.comment_text,
+            user_id: req.session.user_id,
+        });
+        res.status(200).json(newComment);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
 module.exports = router;

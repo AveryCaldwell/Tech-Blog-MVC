@@ -35,9 +35,14 @@ router.get('/', async (req, res) => {
                 const posts = dbPostData.map((post) =>
                     post.get({ plain: true })
                 );
-                res.render('homepage', {
-                    posts,
-                });
+                const resObj = { posts };
+                // if (req.session.username) {
+                // }
+                if (req.session.loggedIn) {
+                    resObj.loggedIn = true;
+                    resObj.username = req.session.username;
+                }
+                res.render('homepage', resObj);
             })
             .catch((err) => {
                 console.log(err);
@@ -66,6 +71,80 @@ router.get('/signup', (req, res) => {
         return;
     }
     res.render('signup');
+});
+router.get('/posts/:id', (req, res) => {
+    Post.findOne({
+        where: {
+            id: req.params.id,
+        },
+        attributes: ['id', 'title', 'content', 'date_created', 'user_id'],
+        include: [
+            {
+                model: User,
+                required: true,
+                attributes: ['username'],
+            },
+            {
+                model: Comment,
+                attributes: [
+                    'id',
+                    'comment_text',
+                    'post_id',
+                    'user_id',
+                    'date_created',
+                ],
+                include: {
+                    model: User,
+                    attributes: ['username'],
+                },
+            },
+        ],
+    }).then((dbPostData) => {
+        if (!dbPostData) {
+            res.status(404).json({
+                message: 'No post found with this id',
+            });
+            return;
+        }
+        const posts = dbPostData.get({ plain: true });
+        Comment.findAll({
+            where: {
+                post_id: req.params.id,
+            },
+            attributes: [
+                'id',
+                'comment_text',
+                'user_id',
+                'post_id',
+                'date_created',
+            ],
+            // include: [
+            //     {
+            //         model: User,
+            //         required: true,
+            //         attributes: ['username'],
+            //     },
+            // ],
+        })
+            .then((dbCommentData) => {
+                // serialize the data
+
+                const comments = dbCommentData.map((post) =>
+                    post.get({ plain: true })
+                );
+                //const comments = dbPostData.get({ plain: true });
+                const resObj = { posts, comments };
+                if (req.session.loggedIn) {
+                    resObj.loggedIn = true;
+                    resObj.username = req.session.username;
+                }
+                res.render('post', resObj);
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    });
 });
 
 module.exports = router;

@@ -3,7 +3,7 @@
 <h2>Posts:</h2>
 <ul>
     {{#each posts}}
-    <li><a href="/dashboard/edit/{{id}}">{{title}} - {{format_date date_created}}</a></li>
+    <li><a href="/posts/{{id}}">{{title}} - {{format_date date_created}}</a></li>
     {{/each}}
 </ul>
 {{else}}

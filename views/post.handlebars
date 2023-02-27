@@ -1,28 +1,52 @@
 <div class="postContainer container-fluid mt-5">
     {{!-- displays the blog post with its title, author, and date created, and the text of the post --}}
-    {{#each post}}
     <div class="card">
-        <div class="card-header">
-            <h4><a class="link" href="/post/{{this.id}}">{{this.title}}</a></h4>
-            <p>Posted by {{this.user.username}} on {{format_date this.date_created}}</p>
-        </div>
-        <p class="card-body">{{this.content}}</p>
-    </div>
-    {{/each}}
+        <h3 class="card-header">Post By {{posts.username}} on {{format_date posts.date_created}}</h3>
+        <form class="card-body edit-post-form">
+            <input name="editPostId" id="editPostId" class="hidden" disabled value="{{posts.id}}" />
+            <label for="editPostTitle" class="form-label">Title</label>
+            <input name="editPostTitle" id="editPostTitle" disabled type="text" value="{{posts.title}}"
+                class="form-input" />
+            <label class="form-label" for="editContent">Content</label>
+            <input name="editContent" id="editContent" type="text" disabled value="{{posts.content}}"
+                class="form-input" />
 
-    {{!-- if logged in, then add a comment --}}
-    {{#if loggedIn}}
-    <div class="card comment-card">
-        <form class="card-body comment-form" id="comment-form">
-            <label class="form-label">Add Comment</label>
-            <textarea id="comment" name="comment-body" class="form-input"></textarea>
-            <button type="submit" class="commentButton" data-id="{{id}}">Submit</button>
         </form>
     </div>
+
+    {{!-- if logged in, then add a comment --}}
+    {{#if comments}}
+    {{#each comments}}
+    <div class="card comment-card">
+        <form class="card-body comment-form" id="comment-form">
+            <label class="form-label">Comment by {{username}} on {{format_date date_created}}</label>
+            <textarea id="comment{{id}}" name="comment-body" disabled class="form-input">{{comment_text}}</textarea>
+        </form>
+    </div>
+    {{/each}}
+    {{else}}
+    <p>No comments have been created yet.</p>
+    {{/if}}
+
+    {{#if loggedIn}}
+    <div class="card text-center">
+        <div class="card-body">
+            <h3 class="card-title">Add Comment</h3>
+            <form id="newComment">
+                <div class="card-text"></div>
+                <input id="hiddenCommentId" hidden="true" value="{{id}}"></input>
+                <textarea class="form-input" id="comment" type="text"
+                    placeholder="Type your comment here..."></textarea>
+                <button class="btn submitBtn" type="button" data-id="{{id}}" id="newCommentButton">Submit</button>
+            </form>
+        </div>
+    </div>
+    {{else}}
+    <p>Please <a href="/login">log in</a> to create a comment</p>
     {{/if}}
 
 
-    {{> comments post.comments}}
+
     {{#if loggedIn}}
     <script src="/js/comment.js"></script>
     {{/if}}

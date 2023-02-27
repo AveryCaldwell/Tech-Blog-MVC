@@ -1,7 +1,7 @@
 const logoutFormHandler = async () => {
     if (logoutFormHandler) {
         try {
-            const response = await fetch('api/users/logout', {
+            const response = await fetch('/api/users/logout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
             });

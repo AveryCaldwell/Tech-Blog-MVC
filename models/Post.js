@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const { User, Comment } = require('./');
 const { format_date } = require('../utils/helpers');
 // create POST model
 class Post extends Model {}
@@ -24,14 +25,14 @@ Post.init(
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: User,
                 key: 'id',
             },
         },
         date_created: {
             type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: sequelize.NOW,
+            defaultValue: DataTypes.NOW,
             // set(value) {
             //     return format_date(value);
             // },
