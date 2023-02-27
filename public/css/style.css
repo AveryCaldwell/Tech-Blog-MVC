@@ -64,7 +64,7 @@ a:link {
 .your-post-title {
     font-size: 26px;
     width: 100%;
-    height: 45px;
+    /* height: 45px; */
     border: none;
     margin-bottom: 15px;
     padding-bottom: 45px;
@@ -80,6 +80,7 @@ a:link {
     margin-bottom: 15px;
     padding-left: 20px;
     padding-bottom: 10px;
+    word-break: break-all;
 }
 .dash-user {
     padding-left: 45px;
@@ -133,9 +134,32 @@ a:link {
 /* =====================LOGIN======================= */
 #card-body {
     border-radius: 25px;
+    margin-bottom: 15px;
 }
-
+.name-login,
+.password-login {
+    font-size: 24px;
+    padding: 5px;
+}
+#name-login,
+#password-login {
+    padding-left: 10px;
+    width: 25%;
+    height: auto;
+    font-size: 22px;
+}
+#login {
+    padding-left: 45px;
+    text-indent: 5px;
+}
+.login-button {
+    border-radius: 12px;
+    color: white;
+    background-color: var(--gray);
+    border: none;
+}
 /* =====================POST======================= */
+
 .post-card {
     background-color: var(--blue);
     border-radius: 25px;
@@ -161,16 +185,18 @@ a:link {
 /* =====================EDIT POST======================= */
 #editPostTitle {
     font-size: 26px;
+    background-color: var(--blue);
     width: 100%;
-    height: 45px;
+    /* height: 45px; */
     border: none;
-    font-weight: bold;
 }
 #editContent {
     width: 100%;
     height: 100px;
     text-align: left;
-    display: block;
+    /* display: block; */
+    color: black;
+    padding: 5px;
 }
 
 .edit-post-card {

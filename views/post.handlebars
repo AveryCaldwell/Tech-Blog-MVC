@@ -5,12 +5,11 @@
             <form class="card-body edit-post-form">
                 <input name="editPostId" id="editPostId" class="hidden" disabled value="{{posts.id}}" />
                 {{!-- <label for="editPostTitle" class="form-label post-title-header">Title</label> --}}
-                <input name="editPostTitle" id="editPostTitle" disabled type="text" value="{{posts.title}}"
-                    class="form-input" />
+                <input name="editPostTitle" id="editPostTitle" type="text" value="{{posts.title}}" class="form-input" />
                 {{!-- <label class="form-label post-title-text" for="editContent">Content</label> --}}
                 </br>
-                <input name="editContent" id="editContent" type="text" disabled value="{{posts.content}}"
-                    class="form-input" />
+                <textarea name="editContent" id="editContent" wrap="soft" type="text" disabled
+                    class="form-input">{{posts.content}}</textarea>
                 <h3 class=" post-username card-subtitle  mb-2 text-muted">Post By {{posts.user.username}} on
                     {{format_date posts.date_created}}
                 </h3>

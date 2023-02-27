@@ -17,8 +17,9 @@
             <h3 class="card-title">Add Comment</h3>
             <form id="newComment">
                 <div class="card-text"></div>
-                <input id="hiddenCommentId" hidden="true" value="{{id}}"></input>
-                <textarea class="form-input" id="comment" type="text"
+                {{!-- <input id="hiddenCommentId" hidden="true" value="{{id}}"></input> --}}
+                <textarea id="hiddenCommentId" hidden="true">{{id}}</textarea>
+                <textarea class=" form-input" id="comment" type="text"
                     placeholder="Type your comment here..."></textarea>
                 <button class="btn submitBtn" type="submit" data-id="{{id}}" id="newCommentButton">Submit</button>
             </form>
@@ -32,10 +33,12 @@
             <p>{{title}}</p>
             <p class="card-text">{{body}}</p>
             <form class="updateCommentForm">
-                <input type="hidden" name="comment_id" value="{{id}}">
+                {{!-- <input type="hidden" name="comment_id" value="{{id}}"> --}}
+                <textarea type="hidden" name="comment_id">{{id}}</textarea>
                 <div class="form-group">
                     <label for="title">Title:</label>
-                    <input type="text" class="form-control" name="title" value="{{title}}">
+                    {{!-- <input type="text" class="form-control" name="title" value="{{title}}"> --}}
+                    <textarea type="text" class="form-control" name="title">{{title}}</textarea>
                 </div>
                 <div class="form-group card-body">
                     <label for="body">Content:</label>
