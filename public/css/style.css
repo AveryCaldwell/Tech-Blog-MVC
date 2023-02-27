@@ -15,7 +15,12 @@
 body {
     background-color: var(--light);
 }
-
+button {
+    opacity: 1;
+}
+button:hover {
+    opacity: 0.65;
+}
 /* =====================HEADER======================= */
 .jumbotron {
     background-color: var(--gray);
@@ -47,22 +52,83 @@ a:link {
     text-decoration: none;
 }
 
-/* =====================MAIN======================= */
+/* =====================DASHBOARD======================= */
+.dash-header {
+    text-align: center;
+    padding-bottom: 15px;
+}
+.dash-card {
+    border: none;
+    border-radius: 12px;
+}
+.your-post-title {
+    font-size: 26px;
+    width: 100%;
+    height: 45px;
+    border: none;
+    margin-bottom: 15px;
+    padding-bottom: 45px;
+}
+.dash-post-title {
+    font-size: 18px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+.dash-content {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+.dash-user {
+    padding-left: 45px;
+    text-indent: 5px;
+}
+#new-post-button-dashboard {
+    font-size: 18px;
+    border-radius: 25px;
+    background-color: var(--dark);
+    color: white;
+    margin-left: 50px;
+}
+
+/* =====================HOMEPAGE======================= */
 #homepage-title {
     font-size: 36px;
-    padding-bottom: 15px;
+    padding: 15px;
+    text-align: center;
+    background-color: var(--blue);
+    color: white;
+    border-radius: 25px;
 }
 #home-post-link {
     font-size: 26px;
     text-decoration: none;
     color: black;
     padding-bottom: 5px;
+    font-weight: bold;
+}
+#home-post-link:hover {
+    opacity: 0.65;
 }
 #home-post-content {
     /* font-size: 20px; */
     text-decoration: none;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    padding-bottom: 10px;
 }
-
+.home-card {
+    border: none;
+    border-radius: 12px;
+}
+.home-user {
+    padding-left: 45px;
+    text-indent: 5px;
+}
 /* =====================POST======================= */
 .post-card {
     background-color: var(--blue);
@@ -136,3 +202,5 @@ a:link {
 }
 
 /* =====================LOGIN======================= */
+
+/* =====================SIGNUP======================= */
