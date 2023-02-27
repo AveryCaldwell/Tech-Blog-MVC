@@ -6,7 +6,15 @@
     <h2>Your Posts:</h2>
     <ul>
         {{#each posts}}
-        <li><a href="/dashboard/edit/{{id}}">{{title}}</a></li>
+        <h3><a href="/dashboard/edit/{{id}}">{{title}}</a></h3>
+        {{!-- <h2>{{title}}</h2> --}}
+        <p>{{content}}</p>
+        <p>Posted by {{user.username}} on {{format_date date_created}}</p>
+        <ul>
+            {{#each comments}}
+            <li>{{comment_text}} - {{user.username}}</li>
+            {{/each}}
+        </ul>
         {{/each}}
     </ul>
     {{else}}
