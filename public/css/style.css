@@ -1,3 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --gray: #6c737e;
+    --dark: #7393a7;
+    --blue: #b5cfd8;
+    --light: #e8ecf1;
+}
 .hidden {
     display: none;
+}
+body {
+    background-color: var(--light);
+}
+/* HEADER */
+.jumbotron {
+    background-color: var(--gray);
+    color: white;
+    padding: 15px;
+    margin-bottom: -5px;
+}
+#jumbo-header {
+    color: white;
+    font-size: 36px;
+}
+a:hover,
+a:active,
+a:visited,
+a:link {
+    text-decoration: none;
+}
+
+/* NAVBAR */
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+}
+#nav-background {
+    background-color: var(--dark);
+}
+#logout {
+    text-decoration: none;
+}
+
+/* MAIN */
+#homepage-title {
+    font-size: 36px;
+    padding-bottom: 15px;
+}
+#home-post-link {
+    font-size: 26px;
+    text-decoration: none;
+    color: black;
+    padding-bottom: 5px;
+}
+#home-post-content {
+    /* font-size: 20px; */
+    text-decoration: none;
+}
+
+/* POST handlebars */
+.post-card {
+    background-color: var(--blue);
+}
+.post-title-header,
+#editPostTitle,
+#editContent,
+.post-title-text {
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+.post-username {
+    font-size: 22px;
+    color: var(--gray);
+}
+.post-title-header {
+    font-size: 24px;
+}
+.post-title-text {
+    font-size: 18px;
+}
+#editPostTitle {
+    font-size: 26px;
+    width: 100%;
+    height: 45px;
+    border: none;
+    font-weight: bold;
+}
+#editContent {
+    width: 100%;
+    height: 150px;
+    display: inline-block;
+}
+
+/* POST buttons */
+.update-comment,
+.delete-comment,
+#newCommentButton {
+    border-radius: 12px;
+    color: white;
+    background-color: var(--gray);
+}
+
+/* COMMENT */
+.comment-card-text {
+    width: 60%;
+    height: 50px;
 }

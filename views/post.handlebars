@@ -1,31 +1,37 @@
 <div class="postContainer container-fluid mt-5">
     {{!-- displays the blog post with its title, author, and date created, and the text of the post --}}
-    <div class="card">
-        <h3 class="card-header">Post By {{posts.user.username}} on {{format_date posts.date_created}}</h3>
-        <form class="card-body edit-post-form">
-            <input name="editPostId" id="editPostId" class="hidden" disabled value="{{posts.id}}" />
-            <label for="editPostTitle" class="form-label">Title</label>
-            <input name="editPostTitle" id="editPostTitle" disabled type="text" value="{{posts.title}}"
-                class="form-input" />
-            <label class="form-label" for="editContent">Content</label>
-            <input name="editContent" id="editContent" type="text" disabled value="{{posts.content}}"
-                class="form-input" />
-
-        </form>
+    <div class="card post-card">
+        <div class="card-body">
+            <form class="card-body edit-post-form">
+                <input name="editPostId" id="editPostId" class="hidden" disabled value="{{posts.id}}" />
+                {{!-- <label for="editPostTitle" class="form-label post-title-header">Title</label> --}}
+                <input name="editPostTitle" id="editPostTitle" disabled type="text" value="{{posts.title}}"
+                    class="form-input" />
+                {{!-- <label class="form-label post-title-text" for="editContent">Content</label> --}}
+                </br>
+                <input name="editContent" id="editContent" type="text" disabled value="{{posts.content}}"
+                    class="form-input" />
+                <h3 class=" post-username card-subtitle  mb-2 text-muted">Post By {{posts.user.username}} on
+                    {{format_date posts.date_created}}
+                </h3>
+            </form>
+        </div>
     </div>
 
     {{!-- if logged in, then add a comment --}}
-    {{#if comments}}
-    {{#each comments}}
     <div class="card comment-card">
         <form class="card-body comment-form" id="comment-form">
-            <label class="form-label">Comment by {{user.username}} on {{format_date date_created}}</label>
+            {{#if comments}}
+            {{#each comments}}
             <textarea id="comment{{id}}" name="comment-body" {{#ifNotEquals ../uid user_id}} disabled {{/ifNotEquals}}
-                class="form-input">{{comment_text}}</textarea>
+                class="form-input comment-card-text">{{comment_text}}</textarea>
+            </br>
+            <label class="form-label card-subtitle  mb-2 text-muted">- {{user.username}} on {{format_date
+                date_created}}</label>
             {{#ifEquals ../uid user_id}}
-            <button commentId="{{id}}" type="button" class="update-comment"
+            <button commentId="{{id}}" class="btn btn-lg btn update-comment" type="button"
                 onclick="commentUpdate(event)">Update</button>
-            <button commentId="{{id}}" type="button" class="delete-comment"
+            <button commentId="{{id}}" class="btn btn-lg btn delete-comment" type="button"
                 onclick="commentDelete(event)">Delete</button>
             {{/ifEquals}}
         </form>
@@ -35,16 +41,17 @@
     <p>No comments have been created yet.</p>
     {{/if}}
 
-    {{#if loggedIn}}
     <div class="card text-center">
         <div class="card-body">
+            {{#if loggedIn}}
             <h3 class="card-title">Add Comment</h3>
             <form id="newComment">
                 <div class="card-text"></div>
                 <input id="hiddenCommentId" hidden="true" value="{{id}}"></input>
                 <textarea class="form-input" id="comment" type="text"
                     placeholder="Type your comment here..."></textarea>
-                <button class="btn submitBtn" type="button" data-id="{{id}}" id="newCommentButton">Submit</button>
+                <button class="btn submitBtn btn-lg btn" type="button" data-id="{{id}}"
+                    id="newCommentButton">Submit</button>
             </form>
         </div>
     </div>
