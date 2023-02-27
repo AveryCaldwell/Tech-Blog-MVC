@@ -26,8 +26,6 @@ const sess = {
         db: sequelize,
     }),
 };
-// // Add express-session and store as Express.js middleware
-// app.use(session(sess));
 
 // Set Handlebars as the default template engine.
 app.engine('handlebars', hbs.engine);

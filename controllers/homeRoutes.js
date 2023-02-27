@@ -1,5 +1,4 @@
 const router = require('express').Router();
-// const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
@@ -31,13 +30,10 @@ router.get('/', async (req, res) => {
             ],
         })
             .then((dbPostData) => {
-                // `plain: true` turns off medadata; serialize
                 const posts = dbPostData.map((post) =>
                     post.get({ plain: true })
                 );
                 const resObj = { posts };
-                // if (req.session.username) {
-                // }
                 if (req.session.loggedIn) {
                     resObj.loggedIn = true;
                     resObj.username = req.session.username;
@@ -133,7 +129,6 @@ router.get('/posts/:id', (req, res) => {
                 const comments = dbCommentData.map((post) =>
                     post.get({ plain: true })
                 );
-                //const comments = dbPostData.get({ plain: true });
                 const resObj = { posts, comments };
                 if (req.session.loggedIn) {
                     resObj.loggedIn = true;

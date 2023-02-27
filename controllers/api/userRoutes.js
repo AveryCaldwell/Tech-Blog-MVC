@@ -4,12 +4,11 @@ const { User, Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 const bcrypt = require('bcrypt');
 
-// GET all users; api/user
+// GET all users; api/users
 router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll({
             include: [Post, Comment],
-            // attributes: { exclude: ['password'] },
         });
         res.status(200).json(userData);
     } catch (err) {
@@ -17,7 +16,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET user by id; /api/user/1
+// GET user by id; /api/users/1
 router.get('/:id', async (req, res) => {
     try {
         const userData = await User.findOne({
@@ -55,7 +54,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// singup user ('/api/user)
+// singup user ('/api/users)
 router.post('/', async (req, res) => {
     try {
         const userData = await User.create(req.body, { individualHooks: true });
@@ -70,7 +69,7 @@ router.post('/', async (req, res) => {
         res.status(400).json(err);
     }
 });
-// login ('/api/user/login')
+// login ('/api/users/login')
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({
@@ -96,7 +95,6 @@ router.post('/login', async (req, res) => {
         // Saves user info as logged in
         req.session.save(() => {
             req.session.user_id = userData.id;
-            // req.session.username = userData.username;
             req.session.loggedIn = true;
 
             res.json({ user: userData, message: 'You are now logged in!' });

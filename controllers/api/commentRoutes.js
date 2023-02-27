@@ -33,29 +33,6 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-// Update Comment by id
-// router.put('/:id', withAuth, async (req, res) => {
-//     try {
-//         const updateComment = await Comment.update(
-//             {
-//                 comment_text: req.body.comment_text,
-//             },
-//             {
-//                 where: {
-//                     id: req.params.id,
-//                 },
-//             }
-//         );
-//         if (!updateComment) {
-//             res.status(404).json({ message: 'No Comment found with this id' });
-//             return;
-//         }
-//         res.status(200).json(updateComment);
-//     } catch (err) {
-//         res.status(400).json(err);
-//     }
-// });
-
 // Delete Comment by id
 router.delete('/:id', withAuth, async (req, res) => {
     try {

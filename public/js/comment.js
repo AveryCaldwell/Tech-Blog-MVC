@@ -2,14 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document
         .querySelector('#newCommentButton')
         .addEventListener('click', commentFormHandler);
-    // document
-    //     .querySelector('.delete-comment')
-    //     .addEventListener('click', commentDelete);
-    // document
-    //     .querySelector('.update-comment')
-    //     .addEventListener('click', commentUpdate);
 });
-
+// show comments
 const commentFormHandler = async (event) => {
     const comment_text = document.querySelector('#comment').value.trim();
 
@@ -37,14 +31,10 @@ const commentFormHandler = async (event) => {
         }
     }
 };
-
+// delete comment
 const commentDelete = async (event) => {
     event.preventDefault();
-    // const comment_text = document.querySelector('#comment').value.trim();
     const commentId = event.target.getAttribute('commentid');
-    // const post_id = window.location.toString().split('/')[
-    //     window.location.toString().split('/').length - 1
-    // ];
 
     const response = await fetch(`/api/posts/comment/${commentId}`, {
         method: 'DELETE',
@@ -63,10 +53,9 @@ const commentDelete = async (event) => {
         document.querySelector('#comment').style.display = 'block';
     }
 };
-
+// update comment
 const commentUpdate = async (event) => {
     event.preventDefault();
-    // const comment_text = document.querySelector('#comment').value.trim();
     const commentId = event.target.getAttribute('commentid');
     const commentVal = document.getElementById(`comment${commentId}`).value;
 
@@ -87,7 +76,3 @@ const commentUpdate = async (event) => {
         document.querySelector('#comment').style.display = 'block';
     }
 };
-
-// document
-//     .querySelector('#newCommentForm')
-//     .addEventListener('submit', newCommentFormHandler);

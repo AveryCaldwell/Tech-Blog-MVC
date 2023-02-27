@@ -65,7 +65,7 @@ router.delete('/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
-
+// ADD comment to post
 router.post('/comment', withAuth, async (req, res) => {
     // if no user in session, send messsage
     if (!req.session.user_id) {
@@ -83,7 +83,7 @@ router.post('/comment', withAuth, async (req, res) => {
         res.status(400).json(err);
     }
 });
-
+// DELETE comment by id
 router.delete('/comment/:id', withAuth, async (req, res) => {
     if (!req.session.user_id) {
         return res.status(401).json({ msg: 'Please login!' });
@@ -106,7 +106,7 @@ router.delete('/comment/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
-
+// UPDATE comment by id
 router.put('/comment/:id', async (req, res) => {
     if (!req.session.user_id) {
         return res.status(401).json({ msg: 'Please login!' });

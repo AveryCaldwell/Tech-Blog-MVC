@@ -21,21 +21,6 @@ const seedDatabase = async () => {
         // returning: true,
     });
 
-    // create random user id for posts
-    // for (const post of postData) {
-    //     await Post.create({
-    //         ...post,
-    //         user_id: users[Math.floor(Math.random() * users.length)].id,
-    //     });
-    // }
-    // // create random user id and post id for comments
-    // for (const comment of commentData) {
-    //     await Comment.create({
-    //         ...comment,
-    //         user_id: users[Math.floor(Math.random() * users.length)].id,
-    //         post_id: users[Math.floor(Math.random() * users.length)].id,
-    //     });
-    // }
     process.exit(0);
 };
 

@@ -7,7 +7,6 @@
     <ul>
         {{#each posts}}
         <h3><a href="/dashboard/edit/{{id}}">{{title}}</a></h3>
-        {{!-- <h2>{{title}}</h2> --}}
         <p>{{content}}</p>
         <p>Posted by {{user.username}} on {{format_date date_created}}</p>
         <ul>
@@ -21,7 +20,6 @@
     <p>You haven't created any posts yet.</p>
     {{/if}}
     <button type="submit" class="btn" id="new-post-button-dashboard">+ New Post</button>
-
 
     {{!-- {{#each posts}}
     <div>
