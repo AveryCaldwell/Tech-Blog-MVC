@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 // Create post
 router.post('/', withAuth, async (req, res) => {
     // if no user in session, send messsage
-    if (!req.session.user) {
+    if (!req.session.user_id) {
         return res.status(401).json({ msg: 'Please login!' });
     }
     try {
@@ -23,13 +23,14 @@ router.post('/', withAuth, async (req, res) => {
 
 // Update post by id
 router.put('/:id', async (req, res) => {
-    if (!req.session.user) {
+    if (!req.session.user_id) {
         return res.status(401).json({ msg: 'Please login!' });
     }
     try {
         const postData = await Post.update(req.body, {
             where: {
                 id: req.params.id,
+                user_id: req.session.user_id,
             },
         });
         if (!postData) {
@@ -43,6 +44,9 @@ router.put('/:id', async (req, res) => {
 });
 // Delete post by id
 router.delete('/:id', withAuth, async (req, res) => {
+    if (!req.session.user_id) {
+        return res.status(401).json({ msg: 'Please login!' });
+    }
     try {
         const postData = await Post.destroy({
             where: {

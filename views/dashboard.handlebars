@@ -1,48 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<header>
+    <h1>Welcome to the Most Technologically Savvy Blog on the Web!</h1>
+</header>
+<main>
+    {{#if posts}}
+    <h2>Your Posts:</h2>
+    <ul>
+        {{#each posts}}
+        <li><a href="/dashboard/edit/{{id}}">{{title}}</a></li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <p>You haven't created any posts yet.</p>
+    {{/if}}
+    <button type="submit" class="btn" id="new-post-button-dashboard">+ New Post</button>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech-Blog</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
 
-<body>
-    <header>
-        <h1>Welcome to the Most Technologically Savvy Blog on the Web!</h1>
-    </header>
-    <main>
-        {{#if posts}}
-        <h2>Your Posts:</h2>
+    {{#each posts}}
+    <div>
+        <h2>{{title}}</h2>
+        <p>{{content}}</p>
+        <p>Posted by {{user.username}} on {{date_created}}</p>
         <ul>
-            {{#each posts}}
-            <li><a href="/post/{{id}}">{{title}}</a></li>
+            {{#each comments}}
+            <li>{{comment_text}} - {{user.username}}</li>
             {{/each}}
         </ul>
-        {{else}}
-        <p>You haven't created any posts yet.</p>
-        {{/if}}
-        <button type="submit" class="btn" id="new-post-button">+ New Post</button>
+    </div>
+    {{/each}}
 
+</main>
+<script src="/js/dashboard.js"></script>
 
-        {{#each posts}}
-        <div>
-            <h2>{{title}}</h2>
-            <p>{{content}}</p>
-            <p>Posted by {{user.username}} on {{date_created}}</p>
-            <ul>
-                {{#each comments}}
-                <li>{{comment_text}} - {{user.username}}</li>
-                {{/each}}
-            </ul>
-        </div>
-        {{/each}}
-
-    </main>
-</body>
-
-</html>
 
 {{!-- post info --}}
 {{!-- {{#if posts.length}}

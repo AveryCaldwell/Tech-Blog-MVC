@@ -82,6 +82,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
                 post,
                 loggedIn: true,
                 username: req.session.username,
+                id: req.params.id,
             });
         })
         .catch((err) => {
@@ -91,7 +92,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
 });
 // NEW post; (/dashboard/new)
 router.get('/new', withAuth, (req, res) => {
-    res.render('newPost', { username: req.session.username });
+    res.render('addPost', { loggedIn: true, username: req.session.username });
 });
 
 module.exports = router;

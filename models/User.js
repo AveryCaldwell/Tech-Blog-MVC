@@ -56,12 +56,12 @@ User.init(
                 return newUserData;
             },
             // create beforeUpdate lifecycle "hook" functionality
-            beforeUpdate: async (updatedUserData) => {
-                updatedUserData.password = await bcrypt.hash(
-                    updatedUserData.password,
+            beforeUpdate: async (updateUserData) => {
+                updateUserData.password = await bcrypt.hash(
+                    updateUserData.password,
                     10
                 );
-                return updatedUserData;
+                return updateUserData;
             },
         },
         // pass in our imported sequelize connection (the direct connection to our database)
