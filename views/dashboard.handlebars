@@ -15,7 +15,7 @@
     <button type="submit" class="btn" id="new-post-button-dashboard">+ New Post</button>
 
 
-    {{#each posts}}
+    {{!-- {{#each posts}}
     <div>
         <h2>{{title}}</h2>
         <p>{{content}}</p>
@@ -26,36 +26,7 @@
             {{/each}}
         </ul>
     </div>
-    {{/each}}
+    {{/each}} --}}
 
 </main>
 <script src="/js/dashboard.js"></script>
-
-
-{{!-- post info --}}
-{{!-- {{#if posts.length}}
-<div class="card">
-    <div class="card-header">
-        <h4><a class="link" href="/post/{{id}}">{{title}}</a></h4>
-        <p>Posted by {{user.username}} on {{format_date date_created}}</p>
-    </div>
-    <p class="card-body">{{content}}</p>
-</div> --}}
-
-{{!-- comment info --}}
-{{!-- <div class="comments">
-    {{#each this}}
-    <div class="card">
-        <h3 class="card-header"></h3>
-        <section class="comment card-body">
-            <div class="text">
-                {{comment_text}}
-            </div>
-            <div class="meta">
-                {{user.username}}, {{format_date date_created}}
-            </div>
-        </section>
-    </div>
-    {{/each}}
-</div>
-{{/if}} --}}

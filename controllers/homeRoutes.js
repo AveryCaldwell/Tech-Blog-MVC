@@ -119,13 +119,13 @@ router.get('/posts/:id', (req, res) => {
                 'post_id',
                 'date_created',
             ],
-            // include: [
-            //     {
-            //         model: User,
-            //         required: true,
-            //         attributes: ['username'],
-            //     },
-            // ],
+            include: [
+                {
+                    model: User,
+                    required: true,
+                    attributes: ['username'],
+                },
+            ],
         })
             .then((dbCommentData) => {
                 // serialize the data

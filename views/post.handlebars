@@ -1,7 +1,7 @@
 <div class="postContainer container-fluid mt-5">
     {{!-- displays the blog post with its title, author, and date created, and the text of the post --}}
     <div class="card">
-        <h3 class="card-header">Post By {{posts.username}} on {{format_date posts.date_created}}</h3>
+        <h3 class="card-header">Post By {{posts.user.username}} on {{format_date posts.date_created}}</h3>
         <form class="card-body edit-post-form">
             <input name="editPostId" id="editPostId" class="hidden" disabled value="{{posts.id}}" />
             <label for="editPostTitle" class="form-label">Title</label>
@@ -19,7 +19,7 @@
     {{#each comments}}
     <div class="card comment-card">
         <form class="card-body comment-form" id="comment-form">
-            <label class="form-label">Comment by {{username}} on {{format_date date_created}}</label>
+            <label class="form-label">Comment by {{user.username}} on {{format_date date_created}}</label>
             <textarea id="comment{{id}}" name="comment-body" {{#ifNotEquals ../uid user_id}} disabled {{/ifNotEquals}}
                 class="form-input">{{comment_text}}</textarea>
             {{#ifEquals ../uid user_id}}

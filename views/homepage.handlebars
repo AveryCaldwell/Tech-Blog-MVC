@@ -4,6 +4,8 @@
 <ul>
     {{#each posts}}
     <li><a href="/posts/{{id}}">{{title}} - {{format_date date_created}}</a></li>
+    <p>{{content}}</p>
+    <p>Posted by {{user.username}} on {{format_date date_created}}</p>
     {{/each}}
 </ul>
 {{else}}
