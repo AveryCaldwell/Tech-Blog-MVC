@@ -17,8 +17,8 @@
             </form>
         </div>
     </div>
-
-    {{!-- if logged in, then add a comment --}}
+    </br>
+    {{!-- if logged in, then add a post --}}
     {{!-- <h3 class="mb-2 text-muted">Comments:</h3> --}}
     <div class="card comment-card">
         <form class="card-body comment-form" id="comment-form">
@@ -37,13 +37,13 @@
                 onclick="commentDelete(event)">Delete</button>
             {{/ifEquals}}
         </form>
+        {{/each}}
     </div>
-    {{/each}}
     </br>
     {{else}}
     <p>No comments have been created yet.</p>
     {{/if}}
-
+    </br>
     {{!-- ADD COMMENT --}}
     <div class="card text-center add-comment-card">
         <div class="card-body">
