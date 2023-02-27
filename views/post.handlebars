@@ -39,6 +39,7 @@
         </form>
     </div>
     {{/each}}
+    </br>
     {{else}}
     <p>No comments have been created yet.</p>
     {{/if}}
@@ -57,11 +58,11 @@
                 <button class="btn submitBtn btn-lg btn" type="button" data-id="{{id}}"
                     id="newCommentButton">Submit</button>
             </form>
+            {{else}}
+            <p>Please <a href="/login">log in</a> to create a comment</p>
         </div>
+        {{/if}}
     </div>
-    {{else}}
-    <p>Please <a href="/login">log in</a> to create a comment</p>
-    {{/if}}
 
 
 

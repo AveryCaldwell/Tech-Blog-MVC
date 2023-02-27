@@ -1,10 +1,10 @@
-<div class="card">
+<div class="card edit-post-card">
     <h3 class="card-header">Edit Post</h3>
     <form class="card-body edit-post-form">
         <input name="editPostId" id="editPostId" class="hidden" value="{{post.id}}" />
-        <label for="editPostTitle" class="form-label">Title</label>
+        {{!-- <label for="editPostTitle" class="form-label">Title:</label> --}}
         <input name="editPostTitle" id="editPostTitle" type="text" value="{{post.title}}" class="form-input" />
-        <label class="form-label" for="editContent">Content</label>
+        {{!-- <label class="form-label" for="editContent">Content:</label> --}}
         <input name="editContent" id="editContent" type="text" value="{{post.content}}" class="form-input" />
         <button type="button" class="btn" id="update-post-button">Update Post</button>
         <button type="button" class="delete-post-btn btn" id="delete-post-button">Delete Post</button>

@@ -137,7 +137,8 @@ a:link {
 
 /* =====================POST======================= */
 .post-card {
-    background-color: var(--blue);
+    /* background-color: var(--blue); */
+    border-radius: 25px;
 }
 .post-title-header,
 #editPostTitle,
@@ -156,6 +157,7 @@ a:link {
 .post-title-text {
     font-size: 18px;
 }
+/* =====================EDIT POST======================= */
 #editPostTitle {
     font-size: 26px;
     width: 100%;
@@ -166,10 +168,15 @@ a:link {
 #editContent {
     width: 100%;
     height: 100px;
-    display: inline-block;
+    text-align: left;
+}
+.edit-post-card {
+    border-radius: 25px;
 }
 
 /* =====================POST buttons======================= */
+#delete-post-button,
+#update-post-button,
 .update-comment,
 .delete-comment,
 #newCommentButton {
@@ -184,27 +191,34 @@ a:link {
     background-color: var(--light);
     border: none;
     margin-bottom: 15px;
+    border-radius: 12px;
 }
 .comment-card-text {
-    width: 60%;
+    width: 100%;
     height: auto;
     border: none;
     font-size: 18px;
     padding: 15px 5px 0px 15px;
     text-indent: 10px;
     font-style: italic;
+    background-color: var(--light);
 }
 .comment-username {
     text-indent: 35px;
+}
+#comment {
+    border-radius: 12px;
+    width: 50%;
+    height: auto;
+    padding: 10px;
 }
 /* =====================ADD COMMENT======================= */
 .add-comment-card {
     width: 100%;
     left: 45px;
-    margin-bottom: 15px;
-    background-color: var(--light);
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
+    font-size: 18px;
 }
 
 /* =====================SIGNUP======================= */
