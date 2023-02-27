@@ -27,6 +27,9 @@ router.get('/', withAuth, (req, res) => {
                 attributes: ['username'],
             },
         ],
+        where: {
+            user_id: req.session.user_id,
+        },
     })
         .then((dbPostData) => {
             // `plain: true` turns off medadata; serialize

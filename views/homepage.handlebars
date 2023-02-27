@@ -1,16 +1,15 @@
 <!-- Loop over each object in the posts array -->
+{{#if posts}}
+<h2>Posts:</h2>
+<ul>
+    {{#each posts}}
+    <li><a href="/dashboard/edit/{{id}}">{{title}} - {{format_date date_created}}</a></li>
+    {{/each}}
+</ul>
+{{else}}
+<p>No posts have been created yet.</p>
+{{/if}}
 
-<nav class="navbar">
-    <h1><button type="submit" class="btn" id="your-dashboard">Your Dashboard</button></h1>
-</nav>
-{{#each post}}
-<section class="card">
-    <a href="/post/{{id}}" class="card-body">
-        <h3 class="card-title">{{title}}</h3>
-        <h5>Posted by {{user.username}} on {{date_created}}</h5>
-        <p class="card-text">{{content}}</p>
-    </a>
-</section>
-{{/each}}
-<button type="submit" class="btn" id="new-post-button">+ New Post</button>
+
+
 <script src="/js/homepage.js"></script>

@@ -7,25 +7,9 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
     try {
         // From the Post table, include the following
-        const postData = await Post.findAll({
+        Post.findAll({
             attributes: ['id', 'title', 'content', 'date_created'],
             include: [
-                {
-                    model: Comment,
-                    attributes: [
-                        'id',
-                        'comment_text',
-                        'post_id',
-                        'user_id',
-                        'date_created',
-                    ],
-                    // Order the posts from most recent to least
-                    order: [['date_created', 'DESC']],
-
-                    // From the User table, include the post creator's user name
-                    // From the Comment table, include all comments
-                    include: { model: User, attributes: ['username'] },
-                },
                 {
                     model: Comment,
                     attributes: [
@@ -40,19 +24,25 @@ router.get('/', async (req, res) => {
                         attributes: ['username'],
                     },
                 },
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
             ],
-        });
-
-        // Serialize data so the template can read it
-        // Create an array for the posts
-        const posts = postData.map((post) => post.get({ plain: true }));
-        const loggedIn = req.session.user ? true : false;
-
-        // Pass the posts into the homepage template
-        res.render('homepage', {
-            posts,
-            loggedIn: req.session.loggedIn,
-        });
+        })
+            .then((dbPostData) => {
+                // `plain: true` turns off medadata; serialize
+                const posts = dbPostData.map((post) =>
+                    post.get({ plain: true })
+                );
+                res.render('homepage', {
+                    posts,
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
