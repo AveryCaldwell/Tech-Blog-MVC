@@ -12,14 +12,17 @@
             <p class="dash-content">{{content}}</p>
             <p class="dash-user card-subtitle  mb-2 text-muted">- Posted by {{user.username}} on {{format_date
                 date_created}}</p>
+        </div>
+        <div id="dash-comments">
             <ul>
                 {{#each comments}}
-                <li>{{comment_text}} - {{user.username}}</li>
+                <li class="comment-list">" {{comment_text}} " - {{user.username}}</li>
                 {{/each}}
             </ul>
         </div>
         </br>
         {{/each}}
+
     </ul>
     {{else}}
     <p>You haven't created any posts yet.</p>
