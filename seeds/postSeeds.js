@@ -8,7 +8,7 @@ const post = [
     {
         title: 'Module 14',
         content:
-            'A simple Google search for any concept covered in this course returns thousands of think pieces and tutorials from developers of all skill levels!.',
+            'A simple Google search for any concept covered in this course returns thousands of think pieces and tutorials from developers of all skill levels!',
         user_id: 1,
     },
     {
