@@ -181,7 +181,17 @@ a:link {
 .post-title-text {
     font-size: 18px;
 }
-
+#postTitle {
+    width: 25%;
+    border-radius: 12px;
+    padding: 5px;
+}
+.newPostContent {
+    width: 65%;
+    height: auto;
+    padding: 5px;
+    border-radius: 12px;
+}
 /* =====================EDIT POST======================= */
 #editPostTitle {
     font-size: 26px;
