@@ -11,6 +11,7 @@
   - [Built with](#built-with-🔨)
   - [Useful resources](#useful-resources-📚)
 - [Author](#author-✏️)
+  - [Grade](#grade)
 
 <br>
 
@@ -128,3 +129,5 @@ THEN I am able to view comments but I am prompted to log in again before I can a
   - Email: [AveryCaldwell7@gmail.com](AveryCaldwell7@gmail.com)
   - LinkedIn: [https://www.linkedin.com/in/averycaldwell/](https://www.linkedin.com/in/averycaldwell/)
   - GitHub: [AveryCaldwell](https://github.com/AveryCaldwell)
+
+### Grade - 100/100
